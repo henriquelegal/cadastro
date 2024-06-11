@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <h3>Cadastro de valores</h3>
+    <label> Informe o valor: </label>
+    <input type="text" id="V" /><br>
+    <label> Pesquisar um valor </label>
+    <input type="text" id="V"/>  
+  <button onclick="pequisar()">Pesquisar</button><br>
+    <button onclick="addItem()">Salvar</button>
+    <button onclick="ShowItems()">Listar</button>
+    <button onclick="clearItems()">Limpar</button>
+    <button onclick="removerTodos()">Remover Todos</button><br>
+    <div id="d"></div>
+    <script>
+
+        var Arr = [];
+        function addItem() {
+            if (localStorage.meuArr) {
+                Arr = JSON.parse(localStorage.getItem('meuArr'));
+            }
+            let novoItem = document.getElementById("V").value;
+            Arr.push(novoItem);
+            document.getElementById("V").value="";
+            localStorage.meuArr=JSON.stringify(Arr);
+        }
+
+
+
+        function ShowItems(){
+            let resultDiv=document.getElementById('d');
+            resultDiv.innerHTML="";
+            if(localStorage.meuArr){
+                Arr=JSON.parse(localStorage.getItem('meuArr'));
+            }
+            for(var i in Arr){
+                let p=document.createElement("p");
+                p.innerHTML=Arr[i];
+                resultDiv.append(p);
+            }
+        }
+
+
+
+        function clearItems(){
+            Arr=[];
+            localStorage.meuArr=JSON.stringify(Arr);
+        }
+
+
+        function removerTodos(){
+         Arr.pop;
+         for(var i=0; vetor.length; i++){
+            console.log(Arr[i]);
+         }
+        }
+
+
+        function pesquisar{
+            
+        }
+    </script>
+</body>
+
+</html>
